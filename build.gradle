@@ -1,39 +1,40 @@
 buildscript {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven{ url 'https://maven.aliyun.com/repository/google'}
+        maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
+        maven{ url 'https://maven.aliyun.com/repository/public'}
+        maven{ url 'https://maven.aliyun.com/repository/jcenter'}
+        mavenCentral()
+        jcenter()
     }
 }
 
 plugins {
     id 'java'
-    id 'eclipse' // optional (to generate Eclipse project files)
-    id 'idea' // optional (to generate IntelliJ IDEA project files)
+    id 'jacoco'
 }
 
-repositories {
-    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-}
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-dependencies {
-    testCompile 'org.junit.jupiter:junit-jupiter-api:5.2.0'
-    testCompile 'org.junit.jupiter:junit-jupiter-params:5.2.0'
-    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
-
-    testCompile 'org.assertj:assertj-core:3.10.0'
-}
-
-test {
-    useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed"
+allprojects {
+    repositories {
+        maven{ url 'https://maven.aliyun.com/repository/google'}
+        maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
+        maven{ url 'https://maven.aliyun.com/repository/public'}
+        maven{ url 'https://maven.aliyun.com/repository/jcenter'}
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/jcenter'}
+        mavenCentral()
+        jcenter()
     }
 }
 
-wrapper {
-    gradleVersion = '4.9'
+sourceCompatibility = 1.8
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }

@@ -1,4 +1,4 @@
-package ExpenseService.Expense;
+package tw.practice.basic.expense;
 
 public enum ExpenseType {
     INTERNAL_PROJECT_EXPENSE,
