@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class ExpenseServiceTest {
     @Test
-    public void should_return_internal_expense_type_if_project_is_internal() {
+    public void should_return_internal_expense_type_when_get_expense_type_from_service_given_project_is_internal() {
         // given
         ExpenseService expenseService = new ExpenseService();
         Project internalProject = new Project(ProjectType.INTERNAL, "internal");
@@ -23,7 +23,7 @@ public class ExpenseServiceTest {
     }
 
     @Test
-    public void should_return_expense_type_A_if_project_is_external_and_name_is_project_A() {
+    public void should_return_expense_type_A_when_get_expense_type_from_service_given_project_is_external_and_name_is_project_A() {
         // given
         ExpenseService expenseService = new ExpenseService();
         Project externalProject = new Project(ProjectType.EXTERNAL, "project A");
@@ -36,7 +36,7 @@ public class ExpenseServiceTest {
     }
 
     @Test
-    public void should_return_expense_type_B_if_project_is_external_and_name_is_project_B() {
+    public void should_return_expense_type_B_when_get_expense_type_from_service_given_project_is_external_and_name_is_project_B() {
         // given
         ExpenseService expenseService = new ExpenseService();
         Project externalProject = new Project(ProjectType.EXTERNAL, "project B");
@@ -49,7 +49,7 @@ public class ExpenseServiceTest {
     }
 
     @Test
-    public void should_return_other_expense_type_if_project_is_external_and_has_other_name() {
+    public void should_return_other_expense_type_when_get_expense_type_from_service_given_project_is_external_and_has_other_name() {
         // given
         ExpenseService expenseService = new ExpenseService();
         Project externalProject = new Project(ProjectType.EXTERNAL, "other project");
@@ -62,7 +62,7 @@ public class ExpenseServiceTest {
     }
 
     @Test(expected = UnexpectedProjectTypeException.class)
-    public void should_throw_unexpected_project_exception_if_project_is_invalid() {
+    public void should_throw_unexpected_project_exception_when_get_expense_type_from_service_given_project_is_invalid() {
         // given
         ExpenseService expenseService = new ExpenseService();
         Project externalProject = new Project(ProjectType.UNEXPECTED_PROJECT_TYPE, "other project");
